@@ -28,6 +28,55 @@
   color: #61dafb;
 }
 
+#explain {
+  text-align: center;
+  margin: auto;
+  width: 20%;
+  height: 20%;
+}
+#explain > p {
+  text-align: left;
+}
+
+/* border-box로 지정하면 테두리를 포함한 크기를 지정 */
+* {
+  box-sizing: border-box;
+}
+/* 테이블 관련 */
+table {
+  border: 1px rgb(39, 112, 172) solid;
+  border-collapse: collapse;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+tr:first-child td {
+  border-top-color: black;
+}
+tr:nth-child(3n) td {
+  border-bottom-color: black;
+}
+td {
+  border: 1px solid lightgrey;
+  height: 40px;
+  width: 40px;
+}
+td:first-child {
+  border-left-color: black;
+}
+td:nth-child(3n) {
+  border-right-color: black;
+}
+input {
+  padding: 0;
+  text-align: center;
+  border: 0;
+  height: 40px;
+  width: 40px;
+  /* text-align: center; */
+}
+/* 테이블 관련 끝 */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
