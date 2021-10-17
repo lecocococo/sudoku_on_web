@@ -31,11 +31,11 @@
 #explain {
   text-align: center;
   margin: auto;
-  width: 20%;
-  height: 20%;
+  width: 30%;
+  height: 30%;
 }
 #explain > p {
-  text-align: left;
+  text-align: center;
 }
 
 /* border-box로 지정하면 테두리를 포함한 크기를 지정 */
