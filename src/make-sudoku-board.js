@@ -2,7 +2,7 @@
 // App.js에 export해서 화면에 스도쿠 판이 보이도록
 // 버튼 누르면 정답인지 아닌지 확인
 
-export const blankBoard = [
+export const zeroBoard = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -114,7 +114,7 @@ export const fillBoard = (startBoard) => {
 };
 
 const newSolvedBoard = (_) => {
-  const newBoard = blankBoard.map((row) => row.slice());
+  const newBoard = zeroBoard.map((row) => row.slice());
   fillBoard(newBoard);
   return newBoard;
 };
