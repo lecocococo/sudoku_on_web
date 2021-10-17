@@ -2,7 +2,7 @@
 // App.js에 export해서 화면에 스도쿠 판이 보이도록
 // 버튼 누르면 정답인지 아닌지 확인
 
-const blankBoard = [
+export const blankBoard = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -13,7 +13,7 @@ const blankBoard = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
-let count;
+// let count;
 
 //숫자를 넣을때 그 숫자가 적합한지 확인해주는 부분
 //행 확인
@@ -100,7 +100,9 @@ export const fillBoard = (startBoard) => {
   if (!empty_cell) return startBoard;
 
   //1~9까지 돌면서 9x9 matrix에 값을 찾아 넣어줌!!!
-  for (let num of numShuffle[numArr]) {
+  let shuffledArray = numShuffle(numArr);
+  // console.log(shuffledArray);
+  for (let num of shuffledArray) {
     if (checkIsRight(startBoard, empty_cell, num)) {
       startBoard[empty_cell.rowIdx][empty_cell.colIdx] = num;
       if (fillBoard(startBoard)) return startBoard;
@@ -179,9 +181,9 @@ function fillFromArray(sudoku_board, emptyCellArray) {
   if (!emptyCell) return sudoku_board;
   for (let num of numShuffle(numArr)) {
     if (checkIsRight(sudoku_board, emptyCell, num)) {
-      sudoku_board[emptyCell.rowIndex][emptyCell.colIndex] = num;
+      sudoku_board[emptyCell.rowIdx][emptyCell.colIdx] = num;
       if (fillFromArray(sudoku_board, emptyCellArray)) return sudoku_board;
-      sudoku_board[emptyCell.rowIndex][emptyCell.colIndex] = 0;
+      sudoku_board[emptyCell.rowIdx][emptyCell.colIdx] = 0;
     }
   }
   return false;
@@ -196,24 +198,21 @@ function havingNextEmptyCell(sudoku_board, emptyCellArray) {
 }
 
 //////////////////////////////////////////////////////////////////////////////
-function newSudokuBoard(blanks) {
-  // Reset global iteration counter to 0 and Try to generate a new game.
-  // If counter reaches its maximum limit in the fillPuzzle function, current attemp will abort
-  // To prevent the abort from crashing the script, the error is caught and used to re-run
-  // this function
+export function newSudokuBoard(blanks) {
   try {
-    count = 0;
+    // count = 0;
     let solvedBoard = newSolvedBoard();
+    console.log("solved");
 
-    // Clone the populated board and poke holes in it.
-    // Stored the removed values for clues
     let [removedValue, sudoku_board] = makeBlankCell(
       solvedBoard.map((row) => row.slice()),
       blanks
     );
+    // console.log(sudoku_board);
 
     return [removedValue, sudoku_board, solvedBoard];
   } catch (error) {
-    return newSudokuBoard(blanks);
+    // return newSudokuBoard(blanks);
+    return console.log(error);
   }
 }
