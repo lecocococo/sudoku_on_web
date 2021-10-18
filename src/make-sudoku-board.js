@@ -113,12 +113,6 @@ export const fillBoard = (startBoard) => {
   return false;
 };
 
-const newSolvedBoard = (_) => {
-  const newBoard = zeroBoard.map((row) => row.slice());
-  fillBoard(newBoard);
-  return newBoard;
-};
-
 // 스도쿠 판을 만들기위해 의도적으로 셀을 비우자
 const makeBlankCell = (sudoku_board, blanks) => {
   const removedValue = [];
@@ -143,7 +137,7 @@ const makeBlankCell = (sudoku_board, blanks) => {
     if (checkPossibleSolutions(sudoku_board.map((row) => row.slice())))
       sudoku_board[randomRow][randomCol] = removedValue.pop().value;
   }
-  return [removedValue, sudoku_board];
+  return sudoku_board;
 };
 
 function checkPossibleSolutions(board) {
@@ -197,20 +191,27 @@ function havingNextEmptyCell(sudoku_board, emptyCellArray) {
   return false;
 }
 
+const newSolvedBoard = (_) => {
+  const newBoard = zeroBoard.map((row) => row.slice());
+  fillBoard(newBoard);
+  return newBoard;
+};
+
 //////////////////////////////////////////////////////////////////////////////
 export function newSudokuBoard(blanks) {
   try {
     // count = 0;
     let solvedBoard = newSolvedBoard();
-    console.log("solved");
+    // console.log("solved");
 
-    let [removedValue, sudoku_board] = makeBlankCell(
+    let sudoku_board = makeBlankCell(
       solvedBoard.map((row) => row.slice()),
       blanks
     );
     // console.log(sudoku_board);
 
-    return [removedValue, sudoku_board, solvedBoard];
+    // return [removedValue, sudoku_board, solvedBoard];
+    return [sudoku_board, solvedBoard];
   } catch (error) {
     // return newSudokuBoard(blanks);
     return console.log(error);
