@@ -8,7 +8,7 @@ import * as sudokuMaker from "./make-sudoku-board";
 import Inputs from "./Inputs";
 import CheckAnswer from "./check-answer";
 
-const b = sudokuMaker.newSudokuBoard(5);
+const b = sudokuMaker.newSudokuBoard(30);
 sessionStorage.setItem("solvedBoard", b[1]);
 
 // subject라는 이름의 태그를 만든다
