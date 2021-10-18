@@ -77,11 +77,7 @@ function App() {
       <Subject></Subject>
       <Map></Map>
       <Button></Button>
-      {/* <button id="check" type="button">
-        Click here when you Finish
-      </button> */}
       <Rule></Rule>
-      <Inputs />
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </div>
