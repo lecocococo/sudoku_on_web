@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "./Inputs.module.css";
 function Inputs() {
   const [text, setText] = useState("");
   // 값 변경 시 이벤트 객체가 파라미터(e)에 담김
@@ -13,6 +14,7 @@ function Inputs() {
   return (
     <div>
       <input
+        className={`${style.inputs}`}
         onChange={onChange}
         type="text"
         maxLength="1"
