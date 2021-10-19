@@ -1,5 +1,4 @@
 import React from "react";
-//react의 경우에는 checkAnswer(~) 이런식으로 사용 x
 //그리고 호출한 함수에선 합성이벤트(e)를 처리함
 function CheckAnswer() {
   const onClick = (e) => {
@@ -29,11 +28,15 @@ function CheckAnswer() {
         JSON.stringify(solvedBoardString.match(/.{1,9}/g))
     );
 
+    let score = sessionStorage.getItem("score");
+
     if (
       JSON.stringify(result) ===
       JSON.stringify(solvedBoardString.match(/.{1,9}/g))
     ) {
       alert("정답입니다!!!");
+      //parseInt => string을 int로
+      sessionStorage.setItem("score", parseInt(score) + 1);
       document.location.reload(); //페이지 새로고침(새로운 문제로)
     } else {
       alert("다시 한번 생각해보세요!!!");
