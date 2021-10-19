@@ -6,10 +6,14 @@ import { useState } from "react";
 import "./App.css";
 import * as sudokuMaker from "./make-sudoku-board";
 import Inputs from "./Inputs";
+import Score from "./Score";
 import CheckAnswer from "./check-answer";
 
 const b = sudokuMaker.newSudokuBoard(30);
+let score = sessionStorage.getItem("score");
+if (sessionStorage.getItem("score") === null) score = 0;
 sessionStorage.setItem("solvedBoard", b[1]);
+sessionStorage.setItem("score", score);
 
 // subject라는 이름의 태그를 만든다
 class Subject extends Component {
@@ -71,14 +75,16 @@ class Button extends Component {
     return <CheckAnswer />;
   }
 }
+
 function App() {
   return (
     <div className="App">
       <Subject></Subject>
       <Map></Map>
       <Button></Button>
+      {/* <Scoreboard /> */}
+      <Score />
       <Rule></Rule>
-
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </div>
   );
