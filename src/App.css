@@ -76,9 +76,25 @@ input {
   /* text-align: center; */
 }
 /* 테이블 관련 끝 */
-/* input[type="text"] {
-  border-color: #61dafb;
-} */
+
+#scoreBoard {
+  border: 1px solid black;
+  width: 23%;
+  margin-top: 3%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-auto-flow: column;
+}
+#scoreBoard > p {
+  margin: auto;
+  padding-right: 50%;
+}
+#scoreBoard > button {
+  margin: auto;
+  padding: 0%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
